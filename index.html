@@ -434,6 +434,7 @@
     html{scroll-behavior:auto;}
   }
 
+  [hidden]{display:none !important;}
   /* ===== v2: navigation, mobile polish ===== */
   html{scroll-padding-top:108px;}
   button,a.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
@@ -525,7 +526,7 @@
   .intake-success[hidden]{display:none;}
   .intake-success h3{color:var(--white);font-size:30px;margin-bottom:12px;}
   .intake-success p{color:#B9C3D6;font-size:16.5px;max-width:460px;margin:0 auto;}
-  .intake-success .btn{margin-top:24px;}
+  .intake-success .btn{margin:24px 6px 0;}
   @media(max-width:900px){.partners-layout{grid-template-columns:minmax(0,1fr);gap:32px;}}
   @media(max-width:640px){
     .intake{padding:24px 18px;}
@@ -536,6 +537,20 @@
   }
   .ideas-cta{flex-direction:column;align-items:center;gap:16px;}
   .ideas-price{color:var(--gold-bright);font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;}
+  #faq .section-head{text-align:center;margin-left:auto;margin-right:auto;}
+  #faq .section-head .eyebrow{justify-content:center;}
+  .faq-list{max-width:760px;margin:0 auto;border-bottom:1px solid rgba(22,41,75,0.12);}
+  .faq-list details{border-top:1px solid rgba(22,41,75,0.12);}
+  .faq-list summary{
+    list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    min-height:60px;padding:14px 0;font-family:'Fraunces',serif;font-size:21px;color:var(--navy-deep);
+  }
+  .faq-list summary::-webkit-details-marker{display:none;}
+  .faq-list summary::after{content:"+";color:var(--gold);font-size:28px;line-height:1;flex-shrink:0;}
+  .faq-list details[open] summary::after{content:"\2013";}
+  .faq-list details p{color:var(--slate);font-size:16.5px;line-height:1.7;padding:0 40px 20px 0;}
+  .faq-list details a,.form-note a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
+  @media(max-width:640px){.faq-list summary{font-size:19px;}.faq-list details p{padding-right:8px;}}
 </style>
 </head>
 <body>
@@ -546,6 +561,7 @@
     <div class="nav-links">
       <a href="#packages">The Analysis</a>
       <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
       <a href="tools.html">Tools</a>
     </div>
     <div class="nav-actions">
@@ -557,6 +573,7 @@
     <a href="#packages">The Analysis</a>
     <a href="#process">How it works</a>
     <a href="#partners">Testing partners</a>
+    <a href="#faq">FAQ</a>
     <a href="tools.html">Tools</a>
     <a href="#start" class="btn btn-gold">Get your analysis</a>
   </div>
@@ -708,7 +725,7 @@
     </div>
 
   </div>
-  <p class="pricing-note">Limited analyses each week.</p>
+  <p class="pricing-note">Limited analyses each week. Payment is due via PayPal before work starts.</p>
 
 </section>
 <section id="process" class="wrap">
@@ -735,12 +752,19 @@
     <div class="process-item reveal">
       <div class="process-num">03</div>
       <div class="process-body">
+        <h3>Pay</h3>
+        <p>Pay via PayPal. Your analysis starts once payment is received.</p>
+      </div>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">04</div>
+      <div class="process-body">
         <h3>Review</h3>
         <p>I review your site and conversion journey.</p>
       </div>
     </div>
     <div class="process-item reveal">
-      <div class="process-num">04</div>
+      <div class="process-num">05</div>
       <div class="process-body">
         <h3>Receive</h3>
         <p>Findings arrive in 5–10 days.</p>
@@ -792,6 +816,25 @@
 </section>
 
 
+<section id="faq" class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">FAQ</span>
+    <h2>Questions, answered</h2>
+  </div>
+  <div class="faq-list reveal">
+    <details><summary>How do I pay?</summary><p>Payment is made through PayPal. After you send the form you'll see a PayPal payment button, or I'll email you a PayPal payment link. You can usually pay by card without a PayPal account.</p></details>
+    <details><summary>When does the work start?</summary><p>Only once your payment has been received. Delivery times (5 days for Insights and CRO Analysis, 5–10 days for Advanced) count from when I have your payment and anything I need from you.</p></details>
+    <details><summary>Do you offer refunds?</summary><p>No. Work starts as soon as payment is received, so all payments are non-refundable. If anything is unclear, please ask before you pay.</p></details>
+    <details><summary>What do you need from me?</summary><p>Your website address and what you want visitors to do. For Advanced, I'll also ask for read-only access to your analytics so I can analyse the data.</p></details>
+    <details><summary>What exactly is included?</summary><p>Each package lists what you get, including its limits, such as the number of pages, quick wins and ideas. Anything beyond that isn't included.</p></details>
+    <details><summary>Do you make the changes for me?</summary><p>No. The analysis shows you what to fix and in what order. You or your team make the changes and run any tests.</p></details>
+    <details><summary>Can you guarantee results?</summary><p>No. Results depend on your site, your audience and how the recommendations are applied. The calculator on this page is an illustration, not a prediction.</p></details>
+    <details><summary>Are the consultations really free?</summary><p>Yes. The optional consultation with Advanced and the tool-choosing consultation are both free, up to 30 minutes each.</p></details>
+    <details><summary>Do you earn commission on tools?</summary><p>Some tool links are affiliate links, so I may earn a commission if you sign up. It doesn't change which tools I recommend.</p></details>
+    <details><summary>Where does my information go?</summary><p>Form details are emailed to me through FormSubmit, and payments are handled by PayPal. See the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p></details>
+  </div>
+</section>
+
 <section id="start" class="wrap">
   <div class="section-head reveal">
     <span class="eyebrow">Get started</span>
@@ -835,13 +878,14 @@
     <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit" class="btn btn-gold" id="intakeSubmit">Send my details</button>
     <p class="form-status" id="intakeStatus" role="status" aria-live="polite"></p>
-    <p class="form-note">Your details are emailed to me via FormSubmit. No payment is taken on this form.</p>
+    <p class="form-note">Your details are emailed to me via FormSubmit. Payment is made via PayPal before work starts and is non-refundable. By sending this you agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
   </form>
 
   <div class="intake-success" id="intakeSuccess" hidden>
     <h3>Thanks, got it.</h3>
     <p id="intakeSuccessMsg">I'll email you shortly to confirm next steps.</p>
-    <a href="#" class="btn btn-gold" id="payBtn" hidden target="_blank" rel="noopener">Pay securely</a>
+    <a href="#" class="btn btn-gold" id="payBtn" hidden target="_blank" rel="noopener">Pay with PayPal to start</a>
+    <a href="#" class="btn btn-ghost-light" id="bookBtn" hidden target="_blank" rel="noopener">Book your consultation</a>
   </div>
 </section>
 
@@ -850,6 +894,8 @@
     <span class="footer-logo-full" role="img" aria-label="Conversion Review"></span>
     <div class="footer-links">
       <a href="tools.html">Tools</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://www.instagram.com/conversionreview.co/" target="_blank" rel="noopener">Instagram</a>
       <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a>
     </div>
@@ -956,12 +1002,15 @@
 (function(){
   /* ---- Settings you can change ---- */
   var FORM_EMAIL = 'conversionreview.co@gmail.com'; // after the first submission, FormSubmit gives you a private alias you can use here instead
-  var PAYMENT_LINKS = {                              // optional: paste Stripe/PayPal payment links; leave '' to skip
+  var PAYMENT_LINKS = {                              // optional: paste your PayPal payment link for each package; leave '' to skip
     'Insights — $49': '',
     'CRO Analysis — $199': '',
     'Advanced analysis — $999': '',
     'AI ideas review — $49': ''
   };
+
+  var PAY_DIRECT = false;  // false: package buttons open the form first, then show a Pay button (right for PayPal). true: buttons go straight to the payment link (only if that link collects their website and goal)
+  var BOOKING_LINK = '';  // optional: paste your Google Calendar booking page link here
 
   var form = document.getElementById('intakeForm');
   var select = document.getElementById('f_package');
@@ -972,7 +1021,12 @@
                    advanced:{label:'Advanced', price:'$999', value:'Advanced analysis — $999'} };
   var cta = document.getElementById('tierCta');
   function activeTier(){ var a = document.querySelector('.tier-tab.active'); return a ? a.getAttribute('data-tier') : 'cro'; }
-  function refreshCta(){ var t = tierInfo[activeTier()]; if(cta && t) cta.textContent = 'Continue with ' + t.label + ' · ' + t.price; }
+  function refreshCta(){
+    var t = tierInfo[activeTier()]; if(!cta || !t) return;
+    var link = PAYMENT_LINKS[t.value];
+    if(link && PAY_DIRECT){ cta.href = link; cta.setAttribute('target','_blank'); cta.setAttribute('rel','noopener'); cta.removeAttribute('data-prefill'); cta.textContent = 'Pay & get started · ' + t.price; }
+    else { cta.href = '#start'; cta.removeAttribute('target'); cta.setAttribute('data-prefill','tier'); cta.textContent = 'Continue with ' + t.label + ' · ' + t.price; }
+  }
   document.querySelectorAll('.tier-tab').forEach(function(b){ b.addEventListener('click', refreshCta); });
   refreshCta();
 
@@ -1008,14 +1062,23 @@
         form.hidden = true;
         var s = document.getElementById('intakeSuccess'); s.hidden = false;
         var pkg = String(data.get('package'));
+        var isTool = /^Tool recommendation/.test(pkg);
+        var isAdv = /^Advanced/.test(pkg);
         var link = PAYMENT_LINKS[pkg];
         var pay = document.getElementById('payBtn');
+        var book = document.getElementById('bookBtn');
         var msg = document.getElementById('intakeSuccessMsg');
-        var extra = /^Advanced/.test(pkg) ? ' and, if you\'d like one, arrange your free consultation' : '';
-        msg.textContent = 'I\'ll email you shortly to confirm next steps' + extra + '.';
-        if(/^Tool recommendation/.test(pkg)){ msg.textContent = 'I\'ll email you shortly to arrange your free consultation.'; }
-        if(link){ pay.href = link; pay.hidden = false;
-          msg.textContent = 'Your details are in. You can pay securely now, and I\'ll email you to confirm next steps' + extra + '.';
+        pay.hidden = true; book.hidden = true;
+        if(isTool){
+          msg.textContent = 'Thanks for getting in touch. I\'ll email you shortly to arrange your free consultation.';
+          if(BOOKING_LINK){ book.href = BOOKING_LINK; book.hidden = false; book.textContent = 'Book your free consultation'; }
+        } else {
+          msg.textContent = 'Your analysis starts once payment is received.' + (link ? '' : ' I\'ll email you a PayPal payment link shortly.');
+          if(link){ pay.href = link; pay.hidden = false; }
+          if(isAdv){
+            msg.textContent += ' Your free consultation is optional, and we\'ll arrange it whenever suits you.';
+            if(BOOKING_LINK){ book.href = BOOKING_LINK; book.hidden = false; book.textContent = 'Book your optional consultation'; }
+          }
         }
         s.scrollIntoView({behavior:'smooth', block:'center'});
       })

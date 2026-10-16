@@ -434,6 +434,7 @@
     html{scroll-behavior:auto;}
   }
 
+  [hidden]{display:none !important;}
   /* ===== v2: navigation, mobile polish ===== */
   html{scroll-padding-top:108px;}
   button,a.btn{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
@@ -525,7 +526,7 @@
   .intake-success[hidden]{display:none;}
   .intake-success h3{color:var(--white);font-size:30px;margin-bottom:12px;}
   .intake-success p{color:#B9C3D6;font-size:16.5px;max-width:460px;margin:0 auto;}
-  .intake-success .btn{margin-top:24px;}
+  .intake-success .btn{margin:24px 6px 0;}
   @media(max-width:900px){.partners-layout{grid-template-columns:minmax(0,1fr);gap:32px;}}
   @media(max-width:640px){
     .intake{padding:24px 18px;}
@@ -536,6 +537,20 @@
   }
   .ideas-cta{flex-direction:column;align-items:center;gap:16px;}
   .ideas-price{color:var(--gold-bright);font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.04em;}
+  #faq .section-head{text-align:center;margin-left:auto;margin-right:auto;}
+  #faq .section-head .eyebrow{justify-content:center;}
+  .faq-list{max-width:760px;margin:0 auto;border-bottom:1px solid rgba(22,41,75,0.12);}
+  .faq-list details{border-top:1px solid rgba(22,41,75,0.12);}
+  .faq-list summary{
+    list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    min-height:60px;padding:14px 0;font-family:'Fraunces',serif;font-size:21px;color:var(--navy-deep);
+  }
+  .faq-list summary::-webkit-details-marker{display:none;}
+  .faq-list summary::after{content:"+";color:var(--gold);font-size:28px;line-height:1;flex-shrink:0;}
+  .faq-list details[open] summary::after{content:"\2013";}
+  .faq-list details p{color:var(--slate);font-size:16.5px;line-height:1.7;padding:0 40px 20px 0;}
+  .faq-list details a,.form-note a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
+  @media(max-width:640px){.faq-list summary{font-size:19px;}.faq-list details p{padding-right:8px;}}
 
   /* ===== tools page ===== */
   .tools-hero{padding-top:56px;padding-bottom:8px;max-width:var(--maxw);}
@@ -611,6 +626,7 @@
     <div class="nav-links">
       <a href="index.html#packages">The Analysis</a>
       <a href="index.html#process">Process</a>
+      <a href="index.html#faq">FAQ</a>
       <a href="tools.html" class="current">Tools</a>
     </div>
     <div class="nav-actions">
@@ -622,6 +638,7 @@
     <a href="index.html#packages">The Analysis</a>
     <a href="index.html#process">How it works</a>
     <a href="index.html#partners">Testing partners</a>
+    <a href="index.html#faq">FAQ</a>
     <a href="tools.html">Tools</a>
     <a href="index.html#start" class="btn btn-gold">Get your analysis</a>
   </div>
@@ -689,6 +706,8 @@
     <a href="index.html" aria-label="Conversion Review home"><span class="footer-logo-full" role="img" aria-label="Conversion Review"></span></a>
     <div class="footer-links">
       <a href="tools.html">Tools</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="https://www.instagram.com/conversionreview.co/" target="_blank" rel="noopener">Instagram</a>
       <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a>
     </div>
