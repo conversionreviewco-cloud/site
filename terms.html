@@ -626,6 +626,11 @@
   .legal a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;color:var(--ink);}
   @media(max-width:640px){.legal{padding-top:28px;}.legal h2{font-size:22px;}}
 </style>
+<!-- ANALYTICS (optional): create a free Umami Cloud account, add this website, then replace the line below with the script they give you.
+     Keep data-do-not-track="true" so visitors who opt out of tracking are respected, and change data-domains if your web address changes.
+     Remove the comment markers (the opening and closing arrows) to switch it on.
+<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID" data-do-not-track="true" data-domains="conversionreviewco-cloud.github.io"></script>
+-->
 </head>
 <body>
 
@@ -653,37 +658,37 @@
   </div>
 </header>
 
-<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. -->
+<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Umami analytics, so switch the analytics script on (see the ANALYTICS comment in the head) before or when you publish it. -->
 <div class="wrap legal">
   <span class="eyebrow">Legal</span>
   <h1>Terms</h1>
   <p class="updated">Last updated: October 2026</p>
 
-  <p>These terms apply when you buy or request anything from Conversion Review ("I"). By paying for a package or sending the form, you agree to them.</p>
+  <p>These terms keep things clear and fair for everyone. They apply when you buy or request anything from Conversion Review ("I"). By paying for a package or sending the form, you agree to them.</p>
 
   <h2>The service</h2>
   <p>Each package is described on the website, including its limits, such as the number of pages, quick wins, A/B test ideas and improvements. Anything beyond what a package lists is not included. I analyse and advise. Making changes to your site and running any tests is up to you or your team.</p>
 
   <h2>Payment</h2>
-  <p>Payment is made through PayPal, in full, at the price shown on the website. Work does not start until payment has been received.</p>
+  <p>Payment is made through PayPal, in full, at the price shown on the website. To keep things fair for everyone, work begins once payment has been received.</p>
 
   <h2>Delivery</h2>
-  <p>Delivery times shown on the website count from the day I have received your payment and anything I need from you, such as your website address or analytics access. Delays in providing these will delay delivery.</p>
+  <p>Delivery times shown on the website count from the day I have received your payment and anything I need from you, such as your website address or analytics access. If I'm waiting on something from you, delivery may take longer.</p>
 
   <h2>No refunds</h2>
-  <p>Because work starts as soon as payment is received, all payments are non-refundable. Please ask any questions before you pay. If you think something has gone wrong, contact me first at <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a> so we can sort it out.</p>
+  <p>Because work begins as soon as payment arrives, all payments are non-refundable. Please ask any questions before you pay. If you think something has gone wrong, contact me first at <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a> so we can talk it through.</p>
 
   <h2>No guarantee of results</h2>
-  <p>Conversion results depend on your site, your audience, your market and how the recommendations are applied. I do not guarantee any particular outcome. The calculator on the website is for illustration only and is not a quote, prediction or promise.</p>
+  <p>Conversion results depend on your site, your audience, your market and how the recommendations are applied. I can't promise any particular outcome. The calculator on the website is for illustration only and is not a quote, prediction or promise.</p>
 
   <h2>What I need from you</h2>
-  <p>You confirm that the information you give me is accurate, and that you have the right to share anything you send, including any access to your accounts.</p>
+  <p>Please make sure the information you give me is accurate and that you're able to share anything you send, including any access to your accounts.</p>
 
   <h2>Confidentiality</h2>
   <p>I use what you share only to deliver your work. Unless you give me access to more, I review your public website.</p>
 
   <h2>Using your report</h2>
-  <p>Your report is for your own business to use. Please don't resell it or present it as your own.</p>
+  <p>Your report is yours to use within your own business. Please don't resell it or present it as your own work.</p>
 
   <h2>Consultations</h2>
   <p>The optional consultation with the Advanced package, and the consultation to help you choose a testing tool, are free and last up to 30 minutes. They are arranged by email or through a booking link.</p>
@@ -726,6 +731,35 @@
   m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   window.addEventListener('resize', function(){ if(window.innerWidth > 760) setOpen(false); });
+})();
+
+(function(){
+  function send(name, data){
+    try{
+      name = String(name).slice(0, 50);
+      if(window.umami && typeof window.umami.track === 'function'){ window.umami.track(name, data || {}); }
+      else if(typeof window.plausible === 'function'){ window.plausible(name, {props: data || {}}); }
+      else if(typeof window.gtag === 'function'){ window.gtag('event', name.replace(/[^a-zA-Z0-9_]/g, '_'), data || {}); }
+    }catch(e){}
+  }
+  window.trackEvent = send;
+  function clean(t){ return String(t || '').replace(/\s+/g, ' ').trim().slice(0, 60); }
+  document.addEventListener('click', function(e){
+    var t = e.target; if(!t || !t.closest) return;
+    var tab = t.closest('.tier-tab'); if(tab){ send('tier-select', {tier: tab.getAttribute('data-tier')}); return; }
+    var mode = t.closest('.roi-mode-btn'); if(mode){ send('calculator-mode', {mode: mode.getAttribute('data-mode')}); return; }
+    var sum = t.closest('summary'); if(sum){ send('faq-toggle', {question: clean(sum.textContent)}); return; }
+    var a = t.closest('a'); if(!a || !a.getAttribute('href')) return;
+    var href = a.getAttribute('href'), text = clean(a.textContent);
+    if(a.id === 'payBtn'){ send('pay-click', {page: location.pathname}); return; }
+    if(a.id === 'bookBtn'){ send('book-click', {}); return; }
+    if(/^mailto:/i.test(href)){ send('email-click', {text: text}); return; }
+    var url; try{ url = new URL(a.href, location.href); }catch(err){ return; }
+    if(url.origin !== location.origin){ send('outbound-click', {destination: url.hostname, link: url.hostname + url.pathname, text: text}); return; }
+    if(a.closest('.nav-links,.mobile-menu')){ send('nav-click', {text: text}); return; }
+    if(a.closest('footer')){ send('footer-click', {text: text}); return; }
+    if(a.classList.contains('btn')){ send('button-click', {text: text}); }
+  }, true);
 })();
 
 </script>

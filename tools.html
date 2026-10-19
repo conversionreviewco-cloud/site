@@ -617,6 +617,11 @@
     .tools-cta{width:calc(100% - 32px);padding:40px 22px;margin:12px auto 32px;}
   }
 </style>
+<!-- ANALYTICS (optional): create a free Umami Cloud account, add this website, then replace the line below with the script they give you.
+     Keep data-do-not-track="true" so visitors who opt out of tracking are respected, and change data-domains if your web address changes.
+     Remove the comment markers (the opening and closing arrows) to switch it on.
+<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID" data-do-not-track="true" data-domains="conversionreviewco-cloud.github.io"></script>
+-->
 </head>
 <body>
 
@@ -647,7 +652,7 @@
 <div class="wrap tools-hero">
   <span class="eyebrow">Recommended tools</span>
   <h1>Testing tools I <em>recommend.</em></h1>
-  <p class="lead">Once your analysis shows what to test, these are the platforms I can point you to.</p>
+  <p class="lead">When you're ready to test, here are the platforms I recommend.</p>
   <p class="tools-disclosure">Some links on this page are affiliate links, which means I may earn a commission if you sign up. It doesn't change which tools I recommend.</p>
 </div>
 
@@ -731,6 +736,35 @@
   m.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
   window.addEventListener('resize', function(){ if(window.innerWidth > 760) setOpen(false); });
+})();
+
+(function(){
+  function send(name, data){
+    try{
+      name = String(name).slice(0, 50);
+      if(window.umami && typeof window.umami.track === 'function'){ window.umami.track(name, data || {}); }
+      else if(typeof window.plausible === 'function'){ window.plausible(name, {props: data || {}}); }
+      else if(typeof window.gtag === 'function'){ window.gtag('event', name.replace(/[^a-zA-Z0-9_]/g, '_'), data || {}); }
+    }catch(e){}
+  }
+  window.trackEvent = send;
+  function clean(t){ return String(t || '').replace(/\s+/g, ' ').trim().slice(0, 60); }
+  document.addEventListener('click', function(e){
+    var t = e.target; if(!t || !t.closest) return;
+    var tab = t.closest('.tier-tab'); if(tab){ send('tier-select', {tier: tab.getAttribute('data-tier')}); return; }
+    var mode = t.closest('.roi-mode-btn'); if(mode){ send('calculator-mode', {mode: mode.getAttribute('data-mode')}); return; }
+    var sum = t.closest('summary'); if(sum){ send('faq-toggle', {question: clean(sum.textContent)}); return; }
+    var a = t.closest('a'); if(!a || !a.getAttribute('href')) return;
+    var href = a.getAttribute('href'), text = clean(a.textContent);
+    if(a.id === 'payBtn'){ send('pay-click', {page: location.pathname}); return; }
+    if(a.id === 'bookBtn'){ send('book-click', {}); return; }
+    if(/^mailto:/i.test(href)){ send('email-click', {text: text}); return; }
+    var url; try{ url = new URL(a.href, location.href); }catch(err){ return; }
+    if(url.origin !== location.origin){ send('outbound-click', {destination: url.hostname, link: url.hostname + url.pathname, text: text}); return; }
+    if(a.closest('.nav-links,.mobile-menu')){ send('nav-click', {text: text}); return; }
+    if(a.closest('footer')){ send('footer-click', {text: text}); return; }
+    if(a.classList.contains('btn')){ send('button-click', {text: text}); }
+  }, true);
 })();
 
 </script>
