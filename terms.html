@@ -551,12 +551,6 @@
   .faq-list details p{color:var(--slate);font-size:16.5px;line-height:1.7;padding:0 40px 20px 0;}
   .faq-list details a,.form-note a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
   @media(max-width:640px){.faq-list summary{font-size:19px;}.faq-list details p{padding-right:8px;}}
-  .consent{position:fixed;left:16px;bottom:16px;z-index:80;max-width:440px;background:var(--navy-deep);color:#C9D2E3;border-radius:16px;padding:18px 18px 16px;box-shadow:0 24px 50px -20px rgba(0,0,0,0.5);}
-  .consent p{font-size:14.5px;line-height:1.55;margin-bottom:14px;}
-  .consent a{color:var(--gold-bright);text-decoration:underline;}
-  .consent-actions{display:flex;gap:10px;flex-wrap:wrap;}
-  .consent .btn{min-height:44px;padding:10px 20px;font-size:14.5px;}
-  @media(max-width:640px){.consent{left:12px;right:12px;max-width:none;bottom:calc(12px + env(safe-area-inset-bottom,0px));}.consent .btn{flex:1;}}
 
   /* ===== tools page ===== */
   .tools-hero{padding-top:56px;padding-bottom:8px;max-width:var(--maxw);}
@@ -632,7 +626,11 @@
   .legal a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;color:var(--ink);}
   @media(max-width:640px){.legal{padding-top:28px;}.legal h2{font-size:22px;}}
 </style>
-
+<!-- ANALYTICS (optional): create a free Umami Cloud account and add this website. Then paste the script they give you into the comment below and remove that comment's opening and closing markers.
+     Keep data-do-not-track="true" so visitors who opt out of tracking are respected. -->
+<!--
+<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID" data-do-not-track="true"></script>
+-->
 </head>
 <body>
 
@@ -660,7 +658,7 @@
   </div>
 </header>
 
-<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Google Analytics, so add your Measurement ID (the GA_ID line in the script at the bottom of each page) before or when you publish it. -->
+<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Umami analytics, so switch the analytics script on (see the ANALYTICS comment in the head) before or when you publish it. -->
 <div class="wrap legal">
   <span class="eyebrow">Legal</span>
   <h1>Terms</h1>
@@ -764,50 +762,6 @@
     if(a.closest('footer')){ send('footer-click', {text: text}); return; }
     if(a.classList.contains('btn')){ send('button-click', {text: text}); }
   }, true);
-})();
-
-(function(){
-  /* ---- Google Analytics: paste your Measurement ID below (looks like G-XXXXXXXXXX). Leave it empty to keep analytics off. ---- */
-  var GA_ID = '';
-  if(!GA_ID) return;
-  var KEY = 'cr_analytics_consent';
-  function store(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
-  function read(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
-  function load(){
-    if(window.__gaLoaded) return; window.__gaLoaded = true;
-    window['ga-disable-' + GA_ID] = false;
-    var s = document.createElement('script'); s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', GA_ID);
-  }
-  function choose(v){
-    store(v);
-    if(v === 'granted'){ load(); } else { window['ga-disable-' + GA_ID] = true; }
-  }
-  function banner(){
-    var el = document.getElementById('consentBar');
-    if(el){ el.hidden = false; return; }
-    el = document.createElement('div');
-    el.id = 'consentBar'; el.className = 'consent';
-    el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'Analytics cookies');
-    el.innerHTML = '<p>May I use analytics cookies? Google Analytics helps me see which pages and links people use. You can read the details in the <a href="privacy.html">Privacy Policy</a>.</p><div class="consent-actions"><button type="button" class="btn btn-gold" data-consent="granted">Accept</button><button type="button" class="btn btn-ghost-light" data-consent="denied">No thanks</button></div>';
-    document.body.appendChild(el);
-    el.querySelectorAll('[data-consent]').forEach(function(btn){
-      btn.addEventListener('click', function(){ choose(btn.getAttribute('data-consent')); el.hidden = true; });
-    });
-  }
-  var saved = read();
-  if(saved === 'granted'){ load(); } else if(saved !== 'denied'){ banner(); }
-  var links = document.querySelector('.footer-links');
-  if(links){
-    var a = document.createElement('a'); a.href = '#'; a.textContent = 'Cookie settings';
-    a.addEventListener('click', function(e){ e.preventDefault(); banner(); });
-    links.appendChild(a);
-  }
 })();
 
 </script>
