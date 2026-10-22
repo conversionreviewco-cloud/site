@@ -551,6 +551,12 @@
   .faq-list details p{color:var(--slate);font-size:16.5px;line-height:1.7;padding:0 40px 20px 0;}
   .faq-list details a,.form-note a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
   @media(max-width:640px){.faq-list summary{font-size:19px;}.faq-list details p{padding-right:8px;}}
+  .consent{position:fixed;left:16px;bottom:16px;z-index:80;max-width:440px;background:var(--navy-deep);color:#C9D2E3;border-radius:16px;padding:18px 18px 16px;box-shadow:0 24px 50px -20px rgba(0,0,0,0.5);}
+  .consent p{font-size:14.5px;line-height:1.55;margin-bottom:14px;}
+  .consent a{color:var(--gold-bright);text-decoration:underline;}
+  .consent-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .consent .btn{min-height:44px;padding:10px 20px;font-size:14.5px;}
+  @media(max-width:640px){.consent{left:12px;right:12px;max-width:none;bottom:calc(12px + env(safe-area-inset-bottom,0px));}.consent .btn{flex:1;}}
 
   /* ===== tools page ===== */
   .tools-hero{padding-top:56px;padding-bottom:8px;max-width:var(--maxw);}
@@ -626,11 +632,7 @@
   .legal a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;color:var(--ink);}
   @media(max-width:640px){.legal{padding-top:28px;}.legal h2{font-size:22px;}}
 </style>
-<!-- ANALYTICS (optional): create a free Umami Cloud account, add this website, then replace the line below with the script they give you.
-     Keep data-do-not-track="true" so visitors who opt out of tracking are respected, and change data-domains if your web address changes.
-     Remove the comment markers (the opening and closing arrows) to switch it on.
-<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID" data-do-not-track="true" data-domains="conversionreviewco-cloud.github.io"></script>
--->
+
 </head>
 <body>
 
@@ -658,13 +660,13 @@
   </div>
 </header>
 
-<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Umami analytics, so switch the analytics script on (see the ANALYTICS comment in the head) before or when you publish it. -->
+<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Google Analytics, so add your Measurement ID (the GA_ID line in the script at the bottom of each page) before or when you publish it. -->
 <div class="wrap legal">
   <span class="eyebrow">Legal</span>
   <h1>Terms</h1>
   <p class="updated">Last updated: October 2026</p>
 
-  <p>These terms keep things clear and fair for everyone. They apply when you buy or request anything from Conversion Review ("I"). By paying for a package or sending the form, you agree to them.</p>
+  <p>Thank you for choosing Conversion Review. These terms keep things clear and fair for everyone. They apply when you buy or request anything from me ("I"). By paying for a package or sending the form, you agree to them.</p>
 
   <h2>The service</h2>
   <p>Each package is described on the website, including its limits, such as the number of pages, quick wins, A/B test ideas and improvements. Anything beyond what a package lists is not included. I analyse and advise. Making changes to your site and running any tests is up to you or your team.</p>
@@ -676,19 +678,19 @@
   <p>Delivery times shown on the website count from the day I have received your payment and anything I need from you, such as your website address or analytics access. If I'm waiting on something from you, delivery may take longer.</p>
 
   <h2>No refunds</h2>
-  <p>Because work begins as soon as payment arrives, all payments are non-refundable. Please ask any questions before you pay. If you think something has gone wrong, contact me first at <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a> so we can talk it through.</p>
+  <p>All payments are final and non-refundable. Work begins as soon as payment is received, so I'm unable to offer refunds once you have paid. Please ask any questions before you pay. If you think something has gone wrong, please contact me first at <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a> so we can talk it through.</p>
 
   <h2>No guarantee of results</h2>
   <p>Conversion results depend on your site, your audience, your market and how the recommendations are applied. I can't promise any particular outcome. The calculator on the website is for illustration only and is not a quote, prediction or promise.</p>
 
   <h2>What I need from you</h2>
-  <p>Please make sure the information you give me is accurate and that you're able to share anything you send, including any access to your accounts.</p>
+  <p>Please make sure the information you give me is accurate and that you're able to share anything you send, including any access to your accounts. Thank you.</p>
 
   <h2>Confidentiality</h2>
-  <p>I use what you share only to deliver your work. Unless you give me access to more, I review your public website.</p>
+  <p>I use what you share only to deliver your work, and I treat it with care. Unless you give me access to more, I review your public website.</p>
 
-  <h2>Using your report</h2>
-  <p>Your report is yours to use within your own business. Please don't resell it or present it as your own work.</p>
+  <h2>Your report</h2>
+  <p>Once you have paid, the report is yours to use however you like.</p>
 
   <h2>Consultations</h2>
   <p>The optional consultation with the Advanced package, and the consultation to help you choose a testing tool, are free and last up to 30 minutes. They are arranged by email or through a booking link.</p>
@@ -704,6 +706,8 @@
 
   <h2>Contact</h2>
   <p>Questions: <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a>.</p>
+
+  <p>Thank you again for your business. I appreciate it.</p>
 
 </div>
 
@@ -760,6 +764,50 @@
     if(a.closest('footer')){ send('footer-click', {text: text}); return; }
     if(a.classList.contains('btn')){ send('button-click', {text: text}); }
   }, true);
+})();
+
+(function(){
+  /* ---- Google Analytics: paste your Measurement ID below (looks like G-XXXXXXXXXX). Leave it empty to keep analytics off. ---- */
+  var GA_ID = '';
+  if(!GA_ID) return;
+  var KEY = 'cr_analytics_consent';
+  function store(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
+  function read(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function load(){
+    if(window.__gaLoaded) return; window.__gaLoaded = true;
+    window['ga-disable-' + GA_ID] = false;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+  function choose(v){
+    store(v);
+    if(v === 'granted'){ load(); } else { window['ga-disable-' + GA_ID] = true; }
+  }
+  function banner(){
+    var el = document.getElementById('consentBar');
+    if(el){ el.hidden = false; return; }
+    el = document.createElement('div');
+    el.id = 'consentBar'; el.className = 'consent';
+    el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'Analytics cookies');
+    el.innerHTML = '<p>May I use analytics cookies? Google Analytics helps me see which pages and links people use. You can read the details in the <a href="privacy.html">Privacy Policy</a>.</p><div class="consent-actions"><button type="button" class="btn btn-gold" data-consent="granted">Accept</button><button type="button" class="btn btn-ghost-light" data-consent="denied">No thanks</button></div>';
+    document.body.appendChild(el);
+    el.querySelectorAll('[data-consent]').forEach(function(btn){
+      btn.addEventListener('click', function(){ choose(btn.getAttribute('data-consent')); el.hidden = true; });
+    });
+  }
+  var saved = read();
+  if(saved === 'granted'){ load(); } else if(saved !== 'denied'){ banner(); }
+  var links = document.querySelector('.footer-links');
+  if(links){
+    var a = document.createElement('a'); a.href = '#'; a.textContent = 'Cookie settings';
+    a.addEventListener('click', function(e){ e.preventDefault(); banner(); });
+    links.appendChild(a);
+  }
 })();
 
 </script>

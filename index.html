@@ -551,12 +551,14 @@
   .faq-list details p{color:var(--slate);font-size:16.5px;line-height:1.7;padding:0 40px 20px 0;}
   .faq-list details a,.form-note a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
   @media(max-width:640px){.faq-list summary{font-size:19px;}.faq-list details p{padding-right:8px;}}
+  .consent{position:fixed;left:16px;bottom:16px;z-index:80;max-width:440px;background:var(--navy-deep);color:#C9D2E3;border-radius:16px;padding:18px 18px 16px;box-shadow:0 24px 50px -20px rgba(0,0,0,0.5);}
+  .consent p{font-size:14.5px;line-height:1.55;margin-bottom:14px;}
+  .consent a{color:var(--gold-bright);text-decoration:underline;}
+  .consent-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .consent .btn{min-height:44px;padding:10px 20px;font-size:14.5px;}
+  @media(max-width:640px){.consent{left:12px;right:12px;max-width:none;bottom:calc(12px + env(safe-area-inset-bottom,0px));}.consent .btn{flex:1;}}
 </style>
-<!-- ANALYTICS (optional): create a free Umami Cloud account, add this website, then replace the line below with the script they give you.
-     Keep data-do-not-track="true" so visitors who opt out of tracking are respected, and change data-domains if your web address changes.
-     Remove the comment markers (the opening and closing arrows) to switch it on.
-<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID" data-do-not-track="true" data-domains="conversionreviewco-cloud.github.io"></script>
--->
+
 </head>
 <body>
 
@@ -730,7 +732,7 @@
     </div>
 
   </div>
-  <p class="pricing-note">I take on a limited number each week. Payment is made via PayPal before work begins.</p>
+  <p class="pricing-note">I take on a limited number each week so I can give each one proper attention. Payment is made via PayPal before work begins.</p>
 
 </section>
 <section id="process" class="wrap">
@@ -827,16 +829,16 @@
     <h2>Questions, answered</h2>
   </div>
   <div class="faq-list reveal">
-    <details><summary>How do I pay?</summary><p>Payment is made through PayPal. After you send the form you'll see a PayPal button, or I'll email you a payment link. You can usually pay by card without a PayPal account.</p></details>
-    <details><summary>When does the work start?</summary><p>Work starts once your payment has been received. Delivery times (5 days for Insights and CRO Analysis, 5–10 days for Advanced) count from when I have your payment and anything I need from you.</p></details>
-    <details><summary>Do you offer refunds?</summary><p>Payments are non-refundable, as work begins as soon as payment is received. If you have any questions beforehand, just ask.</p></details>
-    <details><summary>What do you need from me?</summary><p>Your website address and what you want visitors to do. For Advanced, I'll also ask for read-only access to your analytics.</p></details>
-    <details><summary>What exactly is included?</summary><p>Each package lists what you get, including its limits, such as the number of pages, quick wins and ideas. Anything beyond that isn't included, but you're welcome to ask.</p></details>
-    <details><summary>Do you make the changes for me?</summary><p>No. The analysis shows you what to fix and in what order. You or your team make the changes and run any tests.</p></details>
-    <details><summary>Can you guarantee results?</summary><p>I can't promise results, since they depend on your site, your audience and how the recommendations are applied. The calculator on this page is an illustration, not a prediction.</p></details>
+    <details><summary>How do I pay?</summary><p>Payment is made through PayPal. After you send the form, you'll see a PayPal button, or I'll email you a payment link. You can usually pay by card without a PayPal account.</p></details>
+    <details><summary>When does the work start?</summary><p>Work starts as soon as your payment has been received. Delivery times (5 days for Insights and CRO Analysis, 5–10 days for Advanced) count from when I have your payment and anything I need from you, so sending what I ask for quickly helps me deliver on time.</p></details>
+    <details><summary>Do you offer refunds?</summary><p>No. All payments are final and non-refundable, as work begins as soon as payment is received. I want you to feel confident before you buy, so please ask me any questions first.</p></details>
+    <details><summary>What do you need from me?</summary><p>Your website address and what you'd like visitors to do. For Advanced, I'll also ask for read-only access to your analytics.</p></details>
+    <details><summary>What exactly is included?</summary><p>Each package lists what you get, including its limits, such as the number of pages, quick wins and ideas. Anything beyond that isn't included, but please ask if you'd like more.</p></details>
+    <details><summary>Do you make the changes for me?</summary><p>No. The analysis shows you what to fix and in what order, and you or your team make the changes and run any tests.</p></details>
+    <details><summary>Can you guarantee results?</summary><p>No. Results depend on your site, your audience and how the recommendations are applied, so I can't guarantee them. The calculator on this page is an illustration, not a prediction.</p></details>
     <details><summary>Are the consultations really free?</summary><p>Yes. The optional consultation with Advanced and the tool-choosing consultation are both free, up to 30 minutes each.</p></details>
-    <details><summary>Do you earn commission on tools?</summary><p>Some tool links are affiliate links, so I may earn a commission if you sign up. It doesn't change which tools I recommend.</p></details>
-    <details><summary>Where does my information go?</summary><p>Form details are emailed to me through FormSubmit, and payments are handled by PayPal. See the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p></details>
+    <details><summary>Do you earn commission on tools?</summary><p>Some tool links are affiliate links, so I may earn a commission if you sign up. It doesn't change which tools I recommend, and I'll always be open about it.</p></details>
+    <details><summary>Where does my information go?</summary><p>Form details are emailed to me through FormSubmit, and payments are handled by PayPal. Thank you for trusting me with your details. See the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p></details>
   </div>
 </section>
 
@@ -844,7 +846,7 @@
   <div class="section-head reveal">
     <span class="eyebrow">Get started</span>
     <h2>Tell me about your site</h2>
-    <p>It only takes a minute, and I'll reply by email to confirm.</p>
+    <p>Thank you for getting in touch. It only takes a minute, and I'll reply by email to confirm.</p>
   </div>
 
   <form id="intakeForm" class="intake reveal">
@@ -887,7 +889,7 @@
   </form>
 
   <div class="intake-success" id="intakeSuccess" hidden>
-    <h3>Thanks, I've got it.</h3>
+    <h3>Thank you, I've got it.</h3>
     <p id="intakeSuccessMsg">I'll email you shortly to confirm next steps.</p>
     <a href="#" class="btn btn-gold" id="payBtn" hidden target="_blank" rel="noopener">Pay with PayPal to start</a>
     <a href="#" class="btn btn-ghost-light" id="bookBtn" hidden target="_blank" rel="noopener">Book your consultation</a>
@@ -1075,10 +1077,10 @@
         var msg = document.getElementById('intakeSuccessMsg');
         pay.hidden = true; book.hidden = true;
         if(isTool){
-          msg.textContent = 'Thanks for getting in touch. I\'ll email you shortly to arrange your free consultation.';
+          msg.textContent = 'Thank you for getting in touch. I\'ll email you shortly to arrange your free consultation.';
           if(BOOKING_LINK){ book.href = BOOKING_LINK; book.hidden = false; book.textContent = 'Book your free consultation'; }
         } else {
-          msg.textContent = 'Your analysis begins once payment is received.' + (link ? '' : ' I\'ll email you a PayPal payment link shortly.');
+          msg.textContent = 'I appreciate you choosing Conversion Review. Your analysis begins once payment is received.' + (link ? '' : ' I\'ll email you a PayPal payment link shortly.');
           if(link){ pay.href = link; pay.hidden = false; }
           if(isAdv){
             msg.textContent += ' Your free consultation is optional, and we\'ll arrange it whenever suits you.';
@@ -1092,7 +1094,7 @@
         btn.disabled = false; btn.textContent = 'Send my details';
         if(window.trackEvent){ trackEvent('form-error'); }
         status.className = 'form-status error';
-        status.innerHTML = 'Something went wrong on our side. Please email me at <a href="mailto:' + FORM_EMAIL + '" style="text-decoration:underline">' + FORM_EMAIL + '</a> and I\'ll sort it out.';
+        status.innerHTML = 'Something went wrong on our side, and I\'m sorry for the trouble. Please email me at <a href="mailto:' + FORM_EMAIL + '" style="text-decoration:underline">' + FORM_EMAIL + '</a> and I\'ll sort it out.';
       });
   });
 })();
@@ -1134,6 +1136,50 @@
     if(a.closest('footer')){ send('footer-click', {text: text}); return; }
     if(a.classList.contains('btn')){ send('button-click', {text: text}); }
   }, true);
+})();
+
+(function(){
+  /* ---- Google Analytics: paste your Measurement ID below (looks like G-XXXXXXXXXX). Leave it empty to keep analytics off. ---- */
+  var GA_ID = '';
+  if(!GA_ID) return;
+  var KEY = 'cr_analytics_consent';
+  function store(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
+  function read(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function load(){
+    if(window.__gaLoaded) return; window.__gaLoaded = true;
+    window['ga-disable-' + GA_ID] = false;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+  function choose(v){
+    store(v);
+    if(v === 'granted'){ load(); } else { window['ga-disable-' + GA_ID] = true; }
+  }
+  function banner(){
+    var el = document.getElementById('consentBar');
+    if(el){ el.hidden = false; return; }
+    el = document.createElement('div');
+    el.id = 'consentBar'; el.className = 'consent';
+    el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'Analytics cookies');
+    el.innerHTML = '<p>May I use analytics cookies? Google Analytics helps me see which pages and links people use. You can read the details in the <a href="privacy.html">Privacy Policy</a>.</p><div class="consent-actions"><button type="button" class="btn btn-gold" data-consent="granted">Accept</button><button type="button" class="btn btn-ghost-light" data-consent="denied">No thanks</button></div>';
+    document.body.appendChild(el);
+    el.querySelectorAll('[data-consent]').forEach(function(btn){
+      btn.addEventListener('click', function(){ choose(btn.getAttribute('data-consent')); el.hidden = true; });
+    });
+  }
+  var saved = read();
+  if(saved === 'granted'){ load(); } else if(saved !== 'denied'){ banner(); }
+  var links = document.querySelector('.footer-links');
+  if(links){
+    var a = document.createElement('a'); a.href = '#'; a.textContent = 'Cookie settings';
+    a.addEventListener('click', function(e){ e.preventDefault(); banner(); });
+    links.appendChild(a);
+  }
 })();
 </script>
 </body>

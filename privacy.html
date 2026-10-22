@@ -551,6 +551,12 @@
   .faq-list details p{color:var(--slate);font-size:16.5px;line-height:1.7;padding:0 40px 20px 0;}
   .faq-list details a,.form-note a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;}
   @media(max-width:640px){.faq-list summary{font-size:19px;}.faq-list details p{padding-right:8px;}}
+  .consent{position:fixed;left:16px;bottom:16px;z-index:80;max-width:440px;background:var(--navy-deep);color:#C9D2E3;border-radius:16px;padding:18px 18px 16px;box-shadow:0 24px 50px -20px rgba(0,0,0,0.5);}
+  .consent p{font-size:14.5px;line-height:1.55;margin-bottom:14px;}
+  .consent a{color:var(--gold-bright);text-decoration:underline;}
+  .consent-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .consent .btn{min-height:44px;padding:10px 20px;font-size:14.5px;}
+  @media(max-width:640px){.consent{left:12px;right:12px;max-width:none;bottom:calc(12px + env(safe-area-inset-bottom,0px));}.consent .btn{flex:1;}}
 
   /* ===== tools page ===== */
   .tools-hero{padding-top:56px;padding-bottom:8px;max-width:var(--maxw);}
@@ -626,11 +632,7 @@
   .legal a{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;color:var(--ink);}
   @media(max-width:640px){.legal{padding-top:28px;}.legal h2{font-size:22px;}}
 </style>
-<!-- ANALYTICS (optional): create a free Umami Cloud account, add this website, then replace the line below with the script they give you.
-     Keep data-do-not-track="true" so visitors who opt out of tracking are respected, and change data-domains if your web address changes.
-     Remove the comment markers (the opening and closing arrows) to switch it on.
-<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-WEBSITE-ID" data-do-not-track="true" data-domains="conversionreviewco-cloud.github.io"></script>
--->
+
 </head>
 <body>
 
@@ -658,13 +660,13 @@
   </div>
 </header>
 
-<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Umami analytics, so switch the analytics script on (see the ANALYTICS comment in the head) before or when you publish it. -->
+<!-- DRAFT: written from your stated policies (PayPal, payment first, no refunds). Have a lawyer or your licensing adviser review before relying on it. The Privacy Policy describes Google Analytics, so add your Measurement ID (the GA_ID line in the script at the bottom of each page) before or when you publish it. -->
 <div class="wrap legal">
   <span class="eyebrow">Legal</span>
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: October 2026</p>
 
-  <p>This policy explains what personal information Conversion Review collects through this website, how it is used, and who else handles it. In this policy, "I" means Conversion Review.</p>
+  <p>Thank you for trusting me with your information. This policy explains what personal information Conversion Review collects through this website, how it is used, and who else handles it. In this policy, "I" means Conversion Review.</p>
 
   <h2>What I collect</h2>
   <p>When you use the form on this site, I collect the details you enter: your name, email address, website address, your goal for your site, anything you add in the notes box, and the package you choose.</p>
@@ -690,11 +692,11 @@
     <li><strong>PayPal</strong> processes payments.</li>
     <li><strong>GitHub Pages</strong> hosts this website and may log visitors' IP addresses under GitHub's own privacy statement.</li>
     <li><strong>Google Fonts</strong> supplies the fonts on this site, so your browser connects to Google when a page loads.</li>
-    <li><strong>Umami</strong> provides privacy-friendly analytics that count visits and clicks.</li>
+    <li><strong>Google Analytics</strong>, if you accept analytics cookies, helps me understand how the site is used. Google may process this information in other countries.</li>
   </ul>
 
   <h2>Cookies and tracking</h2>
-  <p>To understand how this site is used, I use Umami, a privacy-friendly analytics service. It counts visits and clicks, such as which pages are viewed and which links are clicked, including links to other websites. It does not use cookies, and it does not see your name or email address. If your browser sends a Do Not Track signal, I respect it. This site does not set its own cookies, although third-party services such as PayPal may use theirs when you use them.</p>
+  <p>If you agree, I use Google Analytics to understand how this site is used, such as which pages are viewed and which links are clicked, including links to other websites. Google Analytics uses cookies, and the information is processed by Google. I do not send your name or email address to Google Analytics. When the cookie notice appears you can choose "No thanks", and you can change your mind at any time with "Cookie settings" in the footer. This site does not set any other cookies of its own, although third-party services such as PayPal may use theirs when you use them.</p>
 
   <h2>Affiliate links</h2>
   <p>Some links to testing tools on this site are affiliate links. If you sign up through one, I may earn a commission. This does not change the price you pay.</p>
@@ -703,7 +705,7 @@
   <p>I keep emails and records for as long as I need them to deliver the service and to meet legal and accounting obligations.</p>
 
   <h2>Your rights</h2>
-  <p>Depending on where you live, you may have the right to ask what information I hold about you, to have it corrected, or to have it deleted. To make a request, just email <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a>.</p>
+  <p>Depending on where you live, you may have the right to ask what information I hold about you, to have it corrected, or to have it deleted. To make a request, please email <a href="mailto:conversionreview.co@gmail.com">conversionreview.co@gmail.com</a>.</p>
 
   <h2>Changes to this policy</h2>
   <p>I may update this policy from time to time. The date at the top shows when it was last changed.</p>
@@ -766,6 +768,50 @@
     if(a.closest('footer')){ send('footer-click', {text: text}); return; }
     if(a.classList.contains('btn')){ send('button-click', {text: text}); }
   }, true);
+})();
+
+(function(){
+  /* ---- Google Analytics: paste your Measurement ID below (looks like G-XXXXXXXXXX). Leave it empty to keep analytics off. ---- */
+  var GA_ID = '';
+  if(!GA_ID) return;
+  var KEY = 'cr_analytics_consent';
+  function store(v){ try{ localStorage.setItem(KEY, v); }catch(e){} }
+  function read(){ try{ return localStorage.getItem(KEY); }catch(e){ return null; } }
+  function load(){
+    if(window.__gaLoaded) return; window.__gaLoaded = true;
+    window['ga-disable-' + GA_ID] = false;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+  }
+  function choose(v){
+    store(v);
+    if(v === 'granted'){ load(); } else { window['ga-disable-' + GA_ID] = true; }
+  }
+  function banner(){
+    var el = document.getElementById('consentBar');
+    if(el){ el.hidden = false; return; }
+    el = document.createElement('div');
+    el.id = 'consentBar'; el.className = 'consent';
+    el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'Analytics cookies');
+    el.innerHTML = '<p>May I use analytics cookies? Google Analytics helps me see which pages and links people use. You can read the details in the <a href="privacy.html">Privacy Policy</a>.</p><div class="consent-actions"><button type="button" class="btn btn-gold" data-consent="granted">Accept</button><button type="button" class="btn btn-ghost-light" data-consent="denied">No thanks</button></div>';
+    document.body.appendChild(el);
+    el.querySelectorAll('[data-consent]').forEach(function(btn){
+      btn.addEventListener('click', function(){ choose(btn.getAttribute('data-consent')); el.hidden = true; });
+    });
+  }
+  var saved = read();
+  if(saved === 'granted'){ load(); } else if(saved !== 'denied'){ banner(); }
+  var links = document.querySelector('.footer-links');
+  if(links){
+    var a = document.createElement('a'); a.href = '#'; a.textContent = 'Cookie settings';
+    a.addEventListener('click', function(e){ e.preventDefault(); banner(); });
+    links.appendChild(a);
+  }
 })();
 
 </script>
